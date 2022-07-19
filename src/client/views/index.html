@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <img src="" alt="dog-logo" id="dog-logo"/>
+      </div>
+      <h5 class="title">Sentence Analyzer</h5>
+    </header>
+
+    <main>
+      <section>
+        <form
+          id="analyze-form"
+          class="analyze-form"
+          onsubmit="return Client.handleSubmit(event)"
+        >
+          <textarea
+            id="txt"
+            type="text"
+            rows="5"
+            name="input"
+            value=""
+            placeholder="Enter a sentence"
+            autocomplete="off"
+            minlength="10"
+            required
+          ></textarea>
+          <input
+            type="submit"
+            name=""
+            value="Submit"
+            onclick="return Client.handleSubmit(event)"
+            onsubmit="return Client.handleSubmit(event)"
+          />
+        </form>
+      </section>
+
+      <section>
+        <strong>Analyzed Results:</strong>
+        <div class="result" id="result">
+          <div class="result-item">
+            <span class="label"> Irony </span>
+            <span class="value" id="irony"> NONIRONIC </span>
+          </div>
+          <div class="result-item">
+            <span class="label"> Agreement </span>
+            <span class="value" id="agreement"> Disagree </span>
+          </div>
+          <div class="result-item">
+            <span class="label"> Subjectivity </span>
+            <span class="value" id="subjectivity"> Subjective </span>
+          </div>
+          <div class="result-item">
+            <span class="label"> Confidence </span>
+            <span class="value" id="confidence"> 86 </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>Made by Kiet</strong>
+    </footer>
+  </body>
+</html>
