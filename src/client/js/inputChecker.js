@@ -1,11 +1,12 @@
-import { minSentenceLength } from "./config"
-function checkForText(inputText) {
-  if (inputText.length < minSentenceLength) {
-    alert("Please enter a longer sentence");
+function checkForInput(inputText) {
+  try {
+    // Check is url
+    const isUrl = Boolean(new URL(inputText));
+    return isUrl;
+  } catch (e) {
+    alert("Invalid input, please enter in the correct format");
     return false;
-  } else {
-    return true;
   }
 }
 
-export { checkForText };
+export { checkForInput };

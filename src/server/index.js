@@ -1,6 +1,5 @@
 var path = require("path");
 const express = require("express");
-const mockAPIResponse = require("./mockAPI.js");
 
 // Environment variable setup
 const dotenv = require("dotenv");
@@ -29,25 +28,14 @@ app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
 
-app.get("/test", function (req, res) {
-  res.send(mockAPIResponse);
-});
-
 app.get("/nlp-sentiment", async (req, res) => {
   const url = new URL(nlpApiUrl);
   url.searchParams.set("key", nlpApiKey);
   url.searchParams.set("lang", "en");
-  url.searchParams.set("txt", req.query.txt);
+  url.searchParams.set("url", req.query.url);
 
   console.log(">>>>>>>>> url.href:", url.href);
   request(url.href, (error, response, body) => {
-    // res.send('ok')
     res.status(200).send(body);
   });
-
-  // const analyzedResult = await request.get(url.href);
-  // analyzedResult.
-  // // console.log('analyzedResult:', await analyzedResult.)
-  // // res.send(await analyzedResult.json());
-  // res.send('ok')
 });

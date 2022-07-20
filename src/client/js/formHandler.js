@@ -1,12 +1,15 @@
 import { callAnalyze } from "./service";
 import { hideResultSection, showResultSection } from "./resultDisplayer";
-import { checkForText } from "./inputChecker";
+import { checkForInput } from "./inputChecker";
 function handleSubmit(event) {
   event.preventDefault();
-  const formText = document.getElementById("txt").value;
-  // check what text was put into the form field
-  checkForText(formText);
+  const formUrl = document.getElementById("url").value;
   const form = document.getElementById("analyze-form");
+
+  // check input url validity
+  if (!checkForInput(formUrl)) {
+    return;
+  }
 
   if (!form.checkValidity()) {
     return false;
@@ -14,9 +17,9 @@ function handleSubmit(event) {
 
   hideResultSection();
   // make request to BE
-  callAnalyze(formText).then(function (res) {
+  callAnalyze(formUrl).then(function (res) {
     if (res && !res.agreement) {
-      alert("Invalid input, please enter in the correct format");
+      alert("The sever return an error!!");
     } else {
       document.getElementById("irony").innerText = res.irony;
       document.getElementById("agreement").innerText = res.agreement;

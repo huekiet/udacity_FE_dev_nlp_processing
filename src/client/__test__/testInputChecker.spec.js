@@ -1,19 +1,19 @@
 // Import the js file to test
-import { checkForText } from "../js/inputChecker";
+import { checkForInput } from "../js/inputChecker";
 
-describe("Testing the checkForText functionality", () => {
+describe("Testing the checkForInput functionality", () => {
   // Provide an empty mock alert function because jsdom does not implement it
   window.alert = jest.fn();
-  test("Testing the checkForText() function definition", () => {
-    expect(checkForText).toBeDefined();
+  test("Testing the checkForInput() function definition", () => {
+    expect(checkForInput).toBeDefined();
   });
 
-  test("Testing the handleSubmit() function with input length less than required", () => {
-    expect(checkForText('1234')).toBeFalsy();
+  test("Testing the checkForInput() function with invalid url", () => {
+    expect(checkForInput('checkForInput')).toBeFalsy();
     expect(window.alert).toHaveBeenCalled();
   });
 
-  test("Testing the handleSubmit() function with input length longer than required", () => {
-    expect(checkForText('1234567890abc')).toBeTruthy();
+  test("Testing the checkForInput() function with valid url", () => {
+    expect(checkForInput('https://www.meaningcloud.com/developer/documentation/supported-formats')).toBeTruthy();
   });
 });
